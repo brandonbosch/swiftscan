@@ -1,27 +1,33 @@
 # swiftscan
 a really fast portscanner written in go
 
-goals are:
+objective:
 - easy to use
 - scan a few or all 65,535 ports as fast as possible
-- minimal output. easy to read and send to other tools like nmap
-- only features needed for identifying open ports, nothing else
-- no external libraries
+- minimal output. easy to read and redirect to other tools like nmap
+- only features needed for identifying open/filtered ports, nothing else
+- a single, static binary with no external dependencies
 - cross platform compatible in windows, linux and osx
 
 ## install
-just 'go build' and you're set.
+just 'go build', or use the precompiled binaries.
 
 ## usage
 
-scan 1024 ports
+scan first 1024 ports
 ```
-sws -ip 1.1.1.1
+swiftscan -ip 1.1.1.1
+```
+or by DNS name
+
+```
+swiftscan -ip client1
+
 ```
 
 scan all 65535 ports
 ```
-sws -ip 1.1.1.1 -full
+swiftscan -ip 1.1.1.1 -full
 ```
 
 ## output

@@ -25,7 +25,7 @@ func worker(ports, results chan int) {
 func main() {
 	var targetPortCount = 1024
 	fullScan := flag.Bool("full", false, "run a full 65535 port scan")
-	flag.StringVar(&targetip, "ip", "0.0.0.0", "target ip address")
+	flag.StringVar(&targetip, "ip", "0.0.0.0", "target host address")
 	flag.Parse()
 
 	if *fullScan {
@@ -56,8 +56,13 @@ func main() {
 	close(ports)
 	close(results)
 	sort.Ints(openports)
+	portscounter := 0
 	for _, port := range openports {
-		fmt.Printf("%d,", port)
+		fmt.Printf("%d", port)
+		portscounter++
+		if portscounter < len(openports) {
+			fmt.Printf(",")
+		}
 	}
 	fmt.Printf("\n")
 }
